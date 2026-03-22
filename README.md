@@ -1,28 +1,28 @@
-﻿# Design and Implementation of T-mall User Shopping Data Analysis System Based on Hadoop Platform 
+# Design and Implementation of T-mall User Shopping Data Analysis System Based on Hadoop Platform 
 
 ## Overview
-This project takes the e-commerce platform Tmall as an example to analyzes user shopping data. Based on Hadoop platform technologies, the data is stored,processed,analyzed,and displayed to obtain representative analytical results.
+This project uses the e-commerce platform Tmall as a case study to analyze user shopping data. Using Hadoop-based technologies, the data is stored, processed, analyzed, and displayed to produce representative analytical results.
 ## Core Functionalities
-Based on Hadoop platform technologies (such as Spark, Hive, and other Hadoop-based software), this project analyzes user behavior on e-commerce websites (such as browsing, shopping, and adding items to favorites) to obtain representative analytical results. The main functional modules are data storage, analysis, and results display.
+Based on Hadoop technologies (such as Spark, Hive, and other Hadoop-based tools), this project analyzes user behavior on e-commerce websites (such as browsing, shopping, and adding items to favorites) to produce representative analytical results. The main functional modules are data storage, analysis, and results display.
 ## Installation & Execution
 ### Prerequisites and installations
 #### Used Software and Configuration with Remarks
-- **CentOS6.4** --Linux Development Environment under a virtual machine
- - **hadoop-2.6.0-cdh5.7.0** --Hadoop software
- - **spark-2.2.0-bin-2.6.0-cdh5.7.0**-- Spark software
- - **hive-1.1.0-cdh5.7.0** --Data warehouse
+- **CentOS6.4** -- Linux Development Environment under a virtual machine
+ - **hadoop-2.6.0-cdh5.7.0** -- Hadoop software
+ - **spark-2.2.0-bin-2.6.0-cdh5.7.0** -- Spark software
+ - **hive-1.1.0-cdh5.7.0** -- Data warehouse
  - **MySQL5.1.73** -- Database, relational database
- -  **SecureCRT** --Tool for remotely connecting to and managing Linux systems
- - **Xftp**  --Tool for uploading files from Windows to a virtual machine
+ -  **SecureCRT** -- Tool for remotely connecting to and managing Linux systems
+ - **Xftp** -- Tool for uploading files from Windows to a virtual machine
  - **IntelliJ IDEA Community** -- Tool for implementing data analysis code
- - **Navicat Premium** --Connect to a MySQL database in a virtual machine to view data
- - **SpringBoot** --Tool for implementing a visualization front-end
- - **Echarts** --Used for drawing visualizations
+ - **Navicat Premium** -- Connect to a MySQL database in a virtual machine to view data
+ - **SpringBoot** -- Tool for implementing a visualization front-end
+ - **Echarts** -- Used for drawing visualizations
 ####  Installation Steps 
-**Step 1:** Download and install VMware Workstation Pro and CentOS 6 CD image files to Install a virtual machine.
+**Step 1:** Download and install VMware Workstation Pro and CentOS 6 CD image files to install a virtual machine.
 
-**Step 2:** Create a dedicated directory for the virtual machine, create a new virtual machine and select this directory and select to install the Linux system.
-**Step 3:**  Check if there is a network connection, and try pinging the network after setting the IP address and automatic startup settings in the vi editor.
+**Step 2:** Create a dedicated directory for the virtual machine, create a new virtual machine, select this directory, and select to install the Linux system.
+**Step 3:** Check for a network connection, and ping the network after setting the IP address and automatic startup settings in the vi editor.
 ```
 ip addr
 vi /etc/sysconfig/network-scripts/ifcfg-ens33 
@@ -51,10 +51,10 @@ ip addr
 ping -c 3 www.baidu.com
 ```
 ##### Configure the host mapping file
-Input `vi /etc/hosts`and enter the hostname and IP address in the editor,then save and exit to ping both the virtual machine and the host machine.
+Input `vi /etc/hosts`and enter the hostname and IP address in the editor, then save and exit to ping both the virtual machine and the host machine.
 
 **Step 4:** Setting up a Hadoop cluster
-##### Install JDK：Upload the jdk.rpm file from Windows to the Linux system and place it in  `/usr/java`directory 
+##### Install JDK：Upload the jdk.rpm file from Windows to the Linux system and place it in the `/usr/java`directory 
 
 `mkdir /usr/java`
 
@@ -71,7 +71,7 @@ Systemctl status firewalld  #check firewall status
 Systemctl stop firewalld  #disable the firewall
 Systemctl disable firewalld
 ```
-##### Install and open hadoop 
+##### Install and open Hadoop 
 ```
 ssh-keygen -t rsa
 ssh-copy-id -i localhost
@@ -138,7 +138,7 @@ stop-all.sh
 ```
 
 **Step 5:**  Install MySQL
-##### Install MySQL database,start and connect the virtual machine to MySQL.
+##### Install MySQL database, start and connect the virtual machine to MySQL.
 ```
 apt-get install mysql-server mysql-client
 lsof -i :3306
@@ -167,7 +167,7 @@ desc table_name
 ```
 select * from table_name
 ```
-###### Print limited data of the table
+###### Print the limited data of the table
 ```
 select * from table_name limit number
 ```
@@ -330,7 +330,7 @@ duplicate_buy_rate = user_dupbuy_count/user_buy_count
 
 val dup_buy_rate = user_dupbuy_count/user_buy_count
 ```
-###### 7. shpping behaviour 
+###### 7. shopping behaviour 
 ```
 val user_behavior_analysis = user_log_result.groupBy("behavior_type").count
 
